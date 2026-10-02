@@ -1,6 +1,6 @@
 # Manifiesto del proyecto: frontmatter de `PROJECT.md`
 
-Versión 1.0. El frontmatter de `PROJECT.md` es el manifiesto del proyecto: lo leen el dashboard, los programas de conformidad y Obsidian (como propiedades).
+Versión 1.1. El frontmatter de `PROJECT.md` es el manifiesto del proyecto: lo leen el dashboard, los programas de conformidad y Obsidian (como propiedades).
 
 ## Reglas de formato
 
@@ -20,16 +20,16 @@ Versión 1.0. El frontmatter de `PROJECT.md` es el manifiesto del proyecto: lo l
 | `nombre` | texto | Sí | Libre | Nombre legible del proyecto. |
 | `tipo` | texto | Sí | `producto-cliente`, `producto-nexoru`, `interno` | Para quién se construye: un cliente, Nexoru como producto, o uso interno. |
 | `cliente` | texto | Sí | Libre | Nombre del cliente. En `producto-nexoru` e `interno` es `Nexoru`. |
-| `fase` | texto | Sí | `idea`, `especificacion`, `construccion`, `pruebas`, `piloto`, `migracion`, `operacion`, `pausado` | Fase actual del ciclo de vida ([lifecycle.md](lifecycle.md)). |
+| `fase` | texto | Sí | `idea`, `especificacion`, `construccion`, `pruebas`, `piloto`, `migracion`, `operacion`, `pausado`, `retirado` | Fase actual del ciclo de vida ([lifecycle.md](lifecycle.md)). |
 | `fase_desde` | fecha | Sí | `AAAA-MM-DD` | Desde cuándo el proyecto está en la `fase` actual. |
 | `estado` | texto | Sí | `verde`, `ambar`, `rojo` | Salud del proyecto frente a su `fecha_objetivo` (ver abajo). |
 | `despliegue` | texto | Sí | `nexoru-subdominio`, `dominio-cliente`, `local`, `ninguno` | Dónde corre hoy. |
 | `urls` | lista de texto | Si `despliegue` es `nexoru-subdominio` o `dominio-cliente` | URLs `https://...` | URLs públicas o de acceso del sistema. |
 | `repo` | texto | Sí | `organizacion/nombre` | Repositorio en GitHub. |
 | `fecha_inicio` | fecha | Sí | `AAAA-MM-DD` | Inicio del proyecto, **decidido por el Dueño**. No es la fecha del primer commit, que se deriva de git y no se captura. |
-| `fecha_objetivo` | fecha | Sí, salvo en `operacion` y `pausado` | `AAAA-MM-DD`, mayor o igual a `fecha_inicio` | Fecha comprometida para la próxima meta del proyecto. |
+| `fecha_objetivo` | fecha | Sí, salvo en `operacion`, `pausado` y `retirado` | `AAAA-MM-DD`, mayor o igual a `fecha_inicio` | Fecha comprometida para la próxima meta del proyecto. |
 | `stack` | lista de texto | Sí | Minúsculas con guion (`nextjs`, `postgres`, `vercel`) | Tecnologías y plataformas base. |
-| `servicios` | lista de texto | Sí (puede ser vacía) | Minúsculas con guion (`api-pagos`, `api-correo`) | Servicios externos consumidos. Cada uno debe tener fila en `## Costo mensual`. |
+| `servicios` | lista de texto | Sí (puede ser vacía) | Minúsculas con guion (`api-pagos`, `api-correo`) | Servicios externos consumidos. Cada uno debe tener fila en `## Costo mensual` (ver [correspondencia fila–servicio](project-standard.md#tabla-de-costo-mensual)). |
 | `costo_mensual_usd` | número | Sí | Número `>= 0`, sin símbolo ni comas | Suma de la tabla `## Costo mensual`. |
 | `siguiente_hito` | texto | Sí | Libre, una línea | Resumen de `## Siguiente hito`. |
 | `mapa_funcional` | texto | Sí | `docs/mapa-funcional.md` | Ruta del mapa funcional. |
@@ -82,6 +82,6 @@ servicios:
 costo_mensual_usd: 45
 siguiente_hito: Fase 3, pagos en línea
 mapa_funcional: docs/mapa-funcional.md
-version_estandar: "1.0"
+version_estandar: "1.1"
 ---
 ```

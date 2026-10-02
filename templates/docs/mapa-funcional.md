@@ -1,7 +1,7 @@
 ---
 proyecto: CONFIRMAR
 tipo_documento: mapa-funcional
-version_estandar: "1.0"
+version_estandar: "1.1"
 ---
 
 # CONFIRMAR: nombre del proyecto. Mapa de diseño funcional

@@ -2,6 +2,22 @@
 
 Todas las versiones del Estándar de Proyecto Nexoru. Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/); versionado según [semver](https://semver.org/lang/es/) (ver `CLAUDE.md`).
 
+## [1.1.0] - 2026-10-01
+
+Versión MINOR: ningún proyecto conforme con 1.0 deja de serlo. Los proyectos pueden seguir declarando `version_estandar: "1.0"` hasta actualizarse.
+
+### Agregado
+- `standard/project-standard.md`: correspondencia entre filas de `## Costo mensual` y elementos de `servicios`. Una fila corresponde a un servicio si el identificador aparece en su nombre normalizado (minúsculas, cada tramo de espacios a un guion). Incluye un ejemplo con el Proyecto Demo.
+- `standard/project-standard.md`: `.nexoruignore`, un archivo opcional en `PROJECTS_ROOT` con las carpetas que no son proyectos (una por línea). Los evaluadores las omiten.
+- `standard/roadmap.md`: definiciones de fase concluida (100% de tareas derivadas, o `Estado manual` = `completa`) y de roadmap concluido (todas sus fases concluidas).
+- `standard/lifecycle.md`: fase `retirado`, con criterios de entrada, y sección "Cierre y reactivación". Con el roadmap concluido, el proyecto va a `operacion` si está desplegado o a `retirado` si no. Un incremento (fase nueva en el roadmap) regresa el proyecto a `especificacion` o `construccion`, con `fase_desde` nuevo, y obliga a actualizar `docs/mapa-funcional.md`.
+- `standard/project-manifest.md`: `retirado` como valor permitido de `fase`; `fecha_objetivo` no es obligatoria en `retirado`.
+- `standard/conformance.md`: dos hallazgos que no cambian el nivel: `operacion` con fases pendientes en el roadmap, y `construccion` o `especificacion` con el roadmap concluido. Alcance del evaluador del portafolio según `.nexoruignore`.
+
+### Cambiado
+- `version_estandar` de las plantillas a `"1.1"`.
+- `standard/lifecycle.md`: la entrada a `operacion` pide además el roadmap concluido y el sistema desplegado; de `operacion` también se sale a `retirado`.
+
 ## [1.0.0] - 2026-09-28
 
 Primera versión.

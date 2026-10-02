@@ -1,6 +1,6 @@
 # Visibilidad de repositorios
 
-Versión 1.0. Criterio para decidir si un repo de la organización `adminnexoru` es público o privado.
+Versión 1.1. Criterio para decidir si un repo de la organización `adminnexoru` es público o privado.
 
 ## Regla
 

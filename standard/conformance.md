@@ -1,6 +1,6 @@
 # Conformidad
 
-Versión 1.0. Define los niveles de conformidad de un proyecto. Cada verificación está escrita para que un programa la ejecute sobre el repo sin interpretación humana.
+Versión 1.1. Define los niveles de conformidad de un proyecto. Cada verificación está escrita para que un programa la ejecute sobre el repo sin interpretación humana.
 
 ## Niveles
 
@@ -17,7 +17,7 @@ Un proyecto que dice "cumple el estándar" está al menos en nivel 1.
 
 ## Verificaciones
 
-Todas las rutas son relativas a la raíz del repo. "Sección X" significa una línea que coincide con `^## (\d+\.\s+)?X\s*$`, sin distinguir mayúsculas.
+Un evaluador del portafolio recorre las subcarpetas de `PROJECTS_ROOT` y omite las listadas en `.nexoruignore` ([project-standard.md §8](project-standard.md#8-portafolio-nexoruignore)). Todas las rutas son relativas a la raíz del repo. "Sección X" significa una línea que coincide con `^## (\d+\.\s+)?X\s*$`, sin distinguir mayúsculas.
 
 ### Nivel 1: `PROJECT.md` válido sin `CONFIRMAR`
 
@@ -32,7 +32,7 @@ Todas las rutas son relativas a la raíz del repo. "Sección X" significa una l�
 | 1.7 | Se cumplen las validaciones cruzadas de [project-manifest.md](project-manifest.md#validaciones-cruzadas). |
 | 1.8 | Existen las 9 secciones H2 de [project-standard.md §2](project-standard.md#2-projectmd-portada-ejecutiva), en ese orden. |
 | 1.9 | `## Resumen ejecutivo` contiene una línea que empieza con `**Métricas de éxito:**`. |
-| 1.10 | `## Costo mensual` contiene una tabla con encabezado `Servicio \| USD/mes \| Nota`, una fila por cada elemento de `servicios` y una fila **Total**. |
+| 1.10 | `## Costo mensual` contiene una tabla con encabezado `Servicio \| USD/mes \| Nota`, una fila por cada elemento de `servicios` (correspondencia según [project-standard.md](project-standard.md#tabla-de-costo-mensual)) y una fila **Total**. |
 | 1.11 | La cadena `CONFIRMAR` no aparece en ningún lugar de `PROJECT.md`. |
 
 ### Nivel 2: mapa funcional, `CLAUDE.md` y Spec Kit
@@ -67,13 +67,15 @@ Una carpeta de spec sin `plan.md` o sin `tasks.md` no rompe el nivel 2, pero el 
 
 ## Hallazgos fuera de nivel
 
-Estas verificaciones son obligatorias según [project-standard.md §6](project-standard.md#6-repositorio-ci-y-secretos). No cambian el nivel, pero el programa las reporta siempre:
+Estas verificaciones vienen de [project-standard.md §6](project-standard.md#6-repositorio-ci-y-secretos) y de [lifecycle.md](lifecycle.md#cierre-y-reactivación). No cambian el nivel, pero el programa las reporta siempre. "Concluida" y "concluido" se definen en [roadmap.md](roadmap.md#fase-y-roadmap-concluidos):
 
 | Severidad | Verificación |
 |---|---|
 | **Crítico** | Un archivo versionado coincide con `.env*` (salvo `.env.example`), o un escáner de secretos (p. ej. gitleaks) encuentra credenciales en el historial. |
 | Alto | La visibilidad del repo contradice [repo-visibility.md](repo-visibility.md) (p. ej. `producto-cliente` en un repo público). |
 | Medio | No existe `.env.example`, o le falta alguna variable que el código lee. |
+| Medio | `fase: operacion` con fases pendientes en el roadmap: al menos una fase no está concluida. |
+| Medio | `fase: construccion` o `fase: especificacion` con el roadmap concluido. |
 | Bajo | El frontmatter tiene comentarios YAML. |
 
 ## Salida esperada del programa

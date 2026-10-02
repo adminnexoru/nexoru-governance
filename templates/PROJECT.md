@@ -19,7 +19,7 @@ servicios:
 costo_mensual_usd: CONFIRMAR
 siguiente_hito: CONFIRMAR
 mapa_funcional: docs/mapa-funcional.md
-version_estandar: "1.0"
+version_estandar: "1.1"
 ---
 
 # CONFIRMAR: nombre del proyecto

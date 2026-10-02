@@ -1,6 +1,6 @@
 # Roadmap
 
-Versión 1.0. Formato de la sección `## Roadmap` de `PROJECT.md` y cómo se obtiene el estado de cada fase.
+Versión 1.1. Formato de la sección `## Roadmap` de `PROJECT.md` y cómo se obtiene el estado de cada fase.
 
 ## Formato de la tabla
 
@@ -54,6 +54,16 @@ Valores permitidos:
 | `pendiente` | Planeada, sin iniciar. |
 
 Toda fase sin estado derivado debe tener `Estado manual` no vacío.
+
+## Fase y roadmap concluidos
+
+Una **fase del roadmap está concluida** si:
+- tiene estado derivado y el 100% de sus tareas está marcado (estado derivado `completa`); o
+- no tiene estado derivado y su `Estado manual` es `completa`.
+
+Cualquier otro estado (`en-curso`, `implementada-sin-validar`, `bloqueada`, `pendiente`) significa que la fase no está concluida.
+
+El **roadmap está concluido** si tiene al menos una fase y todas sus fases están concluidas. Qué pasa con la `fase` del proyecto cuando el roadmap concluye, y cuando se le agrega una fase nueva, se define en [lifecycle.md](lifecycle.md#cierre-y-reactivación).
 
 ## Ejemplo
 

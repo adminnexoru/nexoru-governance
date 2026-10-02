@@ -1,6 +1,6 @@
 # Estándar de Proyecto Nexoru
 
-Versión 1.0. Define qué debe tener todo proyecto que vive en `/proyectos/<nombre>` y cómo se relacionan sus documentos.
+Versión 1.1. Define qué debe tener todo proyecto que vive en `/proyectos/<nombre>` y cómo se relacionan sus documentos.
 
 ## 1. Artefactos obligatorios
 
@@ -23,13 +23,30 @@ Empieza con el frontmatter YAML definido en [project-manifest.md](project-manife
 | `## Alcance` | **Incluye** y **Fuera de alcance**, con el motivo de cada exclusión. |
 | `## Roadmap` | Tabla de fases según [roadmap.md](roadmap.md). |
 | `## Decisiones clave` | Tabla `Decisión \| Razón`. Solo decisiones que condicionan el diseño o el negocio. |
-| `## Costo mensual` | Tabla `Servicio \| USD/mes \| Nota`, una fila por servicio de `servicios` más las plataformas del `stack` que se pagan, y una fila **Total** igual a `costo_mensual_usd`. Un servicio sin costo lleva `—` y la nota "Sin costo". |
+| `## Costo mensual` | Tabla `Servicio \| USD/mes \| Nota`, una fila por servicio de `servicios` más las plataformas del `stack` que se pagan, y una fila **Total** igual a `costo_mensual_usd`. Un servicio sin costo lleva `—` y la nota "Sin costo". Cómo se empareja cada fila con su servicio: [Tabla de costo mensual](#tabla-de-costo-mensual). |
 | `## Riesgos, bloqueos y dependencias` | Lista con prefijo en negritas: **Bloqueo**, **Dependencia**, **Riesgo de costo**, **Riesgo de calidad**, **Riesgo de calendario**, etc. |
 | `## Pendientes conocidos` | Trabajo pendiente no bloqueante, con referencia a la tarea en `specs/` cuando exista. |
 | `## Evidencia de validación` | Tabla `Qué \| Evidencia`: pruebas reales (IDs de registros, corridas, capturas), no afirmaciones. Indica si se validó en producción o en local. |
 | `## Siguiente hito` | Qué sigue y de qué depende. Debe coincidir con `siguiente_hito` del frontmatter. |
 
 Debajo del título H1 va una nota que remite al mapa funcional y a `specs/`, y declara la regla de precedencia (regla central b).
+
+### Tabla de costo mensual
+
+Una fila de `## Costo mensual` corresponde a un servicio de `servicios` si el identificador del servicio aparece dentro del **nombre normalizado** de la fila. El nombre es el valor de la primera columna, y se normaliza así: todo a minúsculas y cada tramo de espacios convertido en un guion. El nombre puede ser legible; si no contiene el identificador, se le agrega entre paréntesis.
+
+Ejemplo con el Proyecto Demo (`servicios: [api-pagos, api-correo]`, `stack` con `vercel`, `costo_mensual_usd: 45`):
+
+| Servicio | USD/mes | Nota |
+|---|---|---|
+| API Pagos | 20 | Cuota fija del plan |
+| Servicio de correo (`api-correo`) | — | Sin costo |
+| Vercel | 25 | Plan de pago |
+| **Total** | **45** | |
+
+- "API Pagos" se normaliza como `api-pagos` y corresponde a `api-pagos`.
+- "Servicio de correo (`api-correo`)" se normaliza como ``servicio-de-correo-(`api-correo`)``, que contiene `api-correo`.
+- "Servicio de correo", sin el paréntesis, no correspondería a ningún servicio.
 
 ## 3. `docs/mapa-funcional.md`: diseño funcional
 
@@ -41,7 +58,7 @@ Frontmatter:
 ---
 proyecto: <id del proyecto>
 tipo_documento: mapa-funcional
-version_estandar: "1.0"
+version_estandar: "1.1"
 ---
 ```
 
@@ -97,6 +114,22 @@ Lo que no es derivable, y por eso sí se captura, son las decisiones del Dueño 
 
 **(c) Lo desconocido se marca `CONFIRMAR`.** Un dato que no se conoce y no es derivable se escribe como `CONFIRMAR` (en el frontmatter, como valor del campo; en el cuerpo, en el lugar del dato). Nunca se inventa ni se deja vacío en silencio. **Un proyecto con al menos un `CONFIRMAR` en `PROJECT.md` o en `docs/mapa-funcional.md` no es conforme** (ver [conformance.md](conformance.md)).
 
-## 8. Idioma
+## 8. Portafolio: `.nexoruignore`
+
+Los proyectos viven en una carpeta raíz común, el **portafolio** (`PROJECTS_ROOT`, p. ej. `/proyectos`). Los evaluadores del estándar (programas de conformidad, dashboard) tratan cada subcarpeta de `PROJECTS_ROOT` como un proyecto.
+
+Las carpetas que no son proyectos (p. ej. un worktree de git de otro proyecto, una copia temporal o un respaldo) se listan en `PROJECTS_ROOT/.nexoruignore`, un archivo **opcional** de texto:
+
+- Una carpeta por línea, con su nombre exacto relativo a `PROJECTS_ROOT` (sin rutas ni comodines).
+- Las líneas vacías y las que empiezan con `#` se ignoran.
+
+Los evaluadores omiten esas carpetas: no las evalúan ni las reportan, ni siquiera como nivel 0. Si el archivo no existe, se evalúan todas las subcarpetas.
+
+```text
+# Worktree de otro proyecto, no es un proyecto
+proyecto-demo-hotfix
+```
+
+## 9. Idioma
 
 Documentación de proyecto (`PROJECT.md`, `docs/`, specs) en español. Código, nombres de variables y mensajes de commit en inglés. Los valores del frontmatter van en minúsculas, sin acentos y con guiones, como se definen en [project-manifest.md](project-manifest.md).
