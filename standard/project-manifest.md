@@ -1,6 +1,6 @@
 # Manifiesto del proyecto: frontmatter de `PROJECT.md`
 
-Versión 1.1. El frontmatter de `PROJECT.md` es el manifiesto del proyecto: lo leen el dashboard, los programas de conformidad y Obsidian (como propiedades).
+Versión 1.2. El frontmatter de `PROJECT.md` es el manifiesto del proyecto: lo leen el dashboard, los programas de conformidad y Obsidian (como propiedades).
 
 ## Reglas de formato
 
@@ -10,7 +10,7 @@ Versión 1.1. El frontmatter de `PROJECT.md` es el manifiesto del proyecto: lo l
 - Los valores enumerados van exactamente como se listan aquí: minúsculas, sin acentos, con guion.
 - Se desaconsejan los comentarios YAML (`# ...`): Obsidian los borra al editar propiedades. Si un dato necesita explicación, va en el cuerpo.
 - Un dato desconocido se escribe `CONFIRMAR`. Un proyecto con `CONFIRMAR` en el frontmatter no es conforme.
-- Los campos opcionales que no aplican se omiten o se dejan vacíos. No se llenan con `CONFIRMAR`.
+- Los campos opcionales que no aplican se omiten o se dejan vacíos. No se llenan con `CONFIRMAR`. Excepción: la plantilla trae `visibilidad: CONFIRMAR` para que el Dueño la decida; si todavía no decide, la línea se borra.
 
 ## Campos
 
@@ -26,6 +26,7 @@ Versión 1.1. El frontmatter de `PROJECT.md` es el manifiesto del proyecto: lo l
 | `despliegue` | texto | Sí | `nexoru-subdominio`, `dominio-cliente`, `local`, `ninguno` | Dónde corre hoy. |
 | `urls` | lista de texto | Si `despliegue` es `nexoru-subdominio` o `dominio-cliente` | URLs `https://...` | URLs públicas o de acceso del sistema. |
 | `repo` | texto | Sí | `organizacion/nombre` | Repositorio en GitHub. |
+| `visibilidad` | texto | No | `publico`, `privado` | Visibilidad del repo **decidida por el Dueño**, según [repo-visibility.md](repo-visibility.md). La razón se registra como fila en `## Decisiones clave` (revisión humana). Vacío equivale a no declarado. |
 | `fecha_inicio` | fecha | Sí | `AAAA-MM-DD` | Inicio del proyecto, **decidido por el Dueño**. No es la fecha del primer commit, que se deriva de git y no se captura. |
 | `fecha_objetivo` | fecha | Sí, salvo en `operacion`, `pausado` y `retirado` | `AAAA-MM-DD`, mayor o igual a `fecha_inicio` | Fecha comprometida para la próxima meta del proyecto. |
 | `stack` | lista de texto | Sí | Minúsculas con guion (`nextjs`, `postgres`, `vercel`) | Tecnologías y plataformas base. |
@@ -70,6 +71,7 @@ despliegue: nexoru-subdominio
 urls:
   - https://demo.nexoru.ai
 repo: adminnexoru/proyecto-demo
+visibilidad: privado
 fecha_inicio: 2026-01-15
 fecha_objetivo: 2026-12-15
 stack:
@@ -82,6 +84,14 @@ servicios:
 costo_mensual_usd: 45
 siguiente_hito: Fase 3, pagos en línea
 mapa_funcional: docs/mapa-funcional.md
-version_estandar: "1.1"
+version_estandar: "1.2"
 ---
+```
+
+Con su fila en `## Decisiones clave`:
+
+```markdown
+| Decisión | Razón |
+|---|---|
+| Repo privado (`visibilidad: privado`) | La evidencia de validación del piloto incluye datos de usuarios reales |
 ```

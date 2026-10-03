@@ -1,6 +1,6 @@
 # Roadmap
 
-Versión 1.1. Formato de la sección `## Roadmap` de `PROJECT.md` y cómo se obtiene el estado de cada fase.
+Versión 1.2. Formato de la sección `## Roadmap` de `PROJECT.md` y cómo se obtiene el estado de cada fase.
 
 ## Formato de la tabla
 

@@ -10,6 +10,7 @@ despliegue: CONFIRMAR
 urls:
   - CONFIRMAR
 repo: CONFIRMAR
+visibilidad: CONFIRMAR
 fecha_inicio: CONFIRMAR
 fecha_objetivo: CONFIRMAR
 stack:
@@ -19,7 +20,7 @@ servicios:
 costo_mensual_usd: CONFIRMAR
 siguiente_hito: CONFIRMAR
 mapa_funcional: docs/mapa-funcional.md
-version_estandar: "1.1"
+version_estandar: "1.2"
 ---
 
 # CONFIRMAR: nombre del proyecto
@@ -58,6 +59,7 @@ El estado de cada fase lo calcula el dashboard a partir de `tasks.md` de las spe
 | Decisión | Razón |
 |---|---|
 | CONFIRMAR | CONFIRMAR |
+| Repo CONFIRMAR (`visibilidad: publico` o `visibilidad: privado`; p. ej. en Proyecto Demo: "Repo privado (`visibilidad: privado`)") | CONFIRMAR (p. ej. en Proyecto Demo: "La evidencia de validación del piloto incluye datos de usuarios reales") |
 
 ## Costo mensual
 

@@ -48,4 +48,4 @@ nexoru-governance/
 
 ## Versión
 
-Versión actual del estándar: **1.1.0** (ver [CHANGELOG.md](CHANGELOG.md)). En el frontmatter de cada proyecto, `version_estandar` registra la versión MAJOR.MINOR con la que cumple, p. ej. `"1.1"`.
+Versión actual del estándar: **1.2.0** (ver [CHANGELOG.md](CHANGELOG.md)). En el frontmatter de cada proyecto, `version_estandar` registra la versión MAJOR.MINOR con la que cumple, p. ej. `"1.2"`.

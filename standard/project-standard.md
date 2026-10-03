@@ -1,6 +1,6 @@
 # Estándar de Proyecto Nexoru
 
-Versión 1.1. Define qué debe tener todo proyecto que vive en `/proyectos/<nombre>` y cómo se relacionan sus documentos.
+Versión 1.2. Define qué debe tener todo proyecto que vive en `/proyectos/<nombre>` y cómo se relacionan sus documentos.
 
 ## 1. Artefactos obligatorios
 
@@ -58,7 +58,7 @@ Frontmatter:
 ---
 proyecto: <id del proyecto>
 tipo_documento: mapa-funcional
-version_estandar: "1.1"
+version_estandar: "1.2"
 ---
 ```
 

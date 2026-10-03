@@ -1,6 +1,6 @@
 # Visibilidad de repositorios
 
-Versión 1.1. Criterio para decidir si un repo de la organización `adminnexoru` es público o privado.
+Versión 1.2. Criterio para decidir si un repo de la organización `adminnexoru` es público o privado.
 
 ## Regla
 
@@ -10,6 +10,21 @@ Versión 1.1. Criterio para decidir si un repo de la organización `adminnexoru`
 | **Público** | Repos sin datos sensibles: estándares, plantillas, herramientas genéricas y productos cuyo contenido no revela estrategia comercial. |
 
 Cambiar de privado a público es una decisión del Dueño, previa revisión del **historial completo** de git, no solo del árbol actual: lo que se borró de un archivo sigue siendo visible en commits anteriores.
+
+## Visibilidad declarada
+
+El Dueño declara la visibilidad decidida con el campo opcional `visibilidad` (`publico` o `privado`) del frontmatter de `PROJECT.md` ([project-manifest.md](project-manifest.md)), y registra la razón como fila en `## Decisiones clave`.
+
+Un evaluador compara el campo con la visibilidad real del repo en GitHub (`public` equivale a `publico`; `private` e `internal`, a `privado`):
+
+| Caso | Resultado |
+|---|---|
+| Sin `visibilidad`, en `producto-nexoru` o `producto-cliente` | Hallazgo alto: **requiere decisión del Dueño**. |
+| Sin `visibilidad`, en `interno` | Sin hallazgo. |
+| `visibilidad` declarada y coincide con la real | **Aceptado**: la visibilidad actual es una decisión del Dueño. |
+| `visibilidad` declarada y no coincide con la real | Hallazgo alto: **discrepancia** entre lo decidido y lo real. |
+
+Ningún caso cambia el nivel de conformidad ([conformance.md](conformance.md#hallazgos-fuera-de-nivel)). Declarar `publico` no exime de la regla de arriba: un `producto-cliente` en un repo público sigue siendo un hallazgo.
 
 ## Nunca en un repo público
 

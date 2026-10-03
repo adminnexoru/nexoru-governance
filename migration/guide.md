@@ -1,6 +1,6 @@
 # Guía de migración al Estándar de Proyecto Nexoru
 
-Versión 1.1. Paso a paso para adecuar un proyecto existente en `/proyectos/<nombre>`.
+Versión 1.2. Paso a paso para adecuar un proyecto existente en `/proyectos/<nombre>`.
 
 ## Resumen
 
@@ -66,6 +66,7 @@ Lo que no es derivable queda como `CONFIRMAR`, y se entrega al Dueño como una l
 - `costo_mensual_usd` y el desglose por servicio
 - Métricas de éxito
 - `Estado manual` de fases sin `tasks.md`
+- `visibilidad` del repo (`publico` o `privado`) y su razón para `## Decisiones clave`
 
 Si propones un valor (p. ej. métricas de éxito), déjalo escrito después de `CONFIRMAR` para que el Dueño solo lo acepte o lo corrija.
 
@@ -92,7 +93,7 @@ No hagas push hasta que el Dueño revise.
 Pega este prompt en Claude Code, desde la raíz del proyecto. Reemplaza `<nombre>` y la ruta del estándar si hace falta.
 
 ```text
-Responde en español. Vas a migrar este proyecto al Estándar de Proyecto Nexoru v1.1.
+Responde en español. Vas a migrar este proyecto al Estándar de Proyecto Nexoru v1.2.
 El estándar está en /proyectos/nexoru-governance (si no existe, clónalo de
 adminnexoru/nexoru-governance). Antes de escribir, lee standard/project-standard.md,
 standard/project-manifest.md, standard/roadmap.md, standard/conformance.md y
@@ -115,7 +116,8 @@ Trabaja en una rama nueva. Luego:
 4. Deja como CONFIRMAR todo lo que no puedas derivar y lístame las preguntas que solo yo
    puedo responder (fase, fase_desde, estado, fecha_inicio, fecha_objetivo y fechas del
    roadmap, costo mensual por servicio, métricas de éxito, estado manual de fases sin
-   tasks.md). Si tienes una propuesta, déjala escrita después del CONFIRMAR.
+   tasks.md, visibilidad del repo y su razón). Si tienes una propuesta, déjala escrita
+   después del CONFIRMAR.
 5. Evalúa el nivel de conformidad actual según standard/conformance.md y dime qué falta
    para el siguiente.
 6. Haz commit con el mensaje "docs: add PROJECT.md and functional map (Nexoru standard
@@ -132,6 +134,7 @@ respuestas:
 - Costo mensual por servicio: ... (total en costo_mensual_usd)
 - Métricas de éxito: ...
 - Estado manual de las fases sin tasks.md: ...
+- visibilidad: publico | privado; razón: ... (o "sin decidir": borra la línea)
 Verifica que no quede ningún CONFIRMAR en PROJECT.md ni en docs/mapa-funcional.md, evalúa
 el nivel de conformidad según el estándar, haz commit con el mensaje "docs: complete
 PROJECT.md for Nexoru standard", haz push de la rama y abre un PR. Al terminar, muéstrame

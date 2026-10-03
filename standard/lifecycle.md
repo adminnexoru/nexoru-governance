@@ -1,6 +1,6 @@
 # Ciclo de vida de un producto Nexoru
 
-Versión 1.1. Define los valores del campo `fase` del manifiesto y cuándo se pasa de uno a otro.
+Versión 1.2. Define los valores del campo `fase` del manifiesto y cuándo se pasa de uno a otro.
 
 ## Modelo
 

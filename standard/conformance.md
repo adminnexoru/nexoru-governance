@@ -1,6 +1,6 @@
 # Conformidad
 
-Versión 1.1. Define los niveles de conformidad de un proyecto. Cada verificación está escrita para que un programa la ejecute sobre el repo sin interpretación humana.
+Versión 1.2. Define los niveles de conformidad de un proyecto. Cada verificación está escrita para que un programa la ejecute sobre el repo sin interpretación humana.
 
 ## Niveles
 
@@ -57,7 +57,7 @@ Una carpeta de spec sin `plan.md` o sin `tasks.md` no rompe el nivel 2, pero el 
 | # | Verificación |
 |---|---|
 | 3.1 | Existe al menos un archivo `.github/workflows/*.yml` o `*.yaml` que se dispara con `push` y `pull_request`. |
-| 3.2 | La última ejecución de CI en la rama principal terminó con éxito (consulta a la API de GitHub). |
+| 3.2 | En la rama principal, la ejecución terminada más reciente de **cada** workflow que satisface 3.1 terminó con éxito (consulta a la API de GitHub). Un workflow sin ejecuciones terminadas en la rama principal no cumple. |
 | 3.3 | `## Roadmap` contiene una tabla con el encabezado exacto de [roadmap.md](roadmap.md). |
 | 3.4 | Cada valor de la columna `Specs` es `—` o una lista de carpetas que existen en `specs/`. |
 | 3.5 | Toda carpeta de `specs/` aparece vinculada en al menos una fase. |
@@ -72,11 +72,15 @@ Estas verificaciones vienen de [project-standard.md §6](project-standard.md#6-r
 | Severidad | Verificación |
 |---|---|
 | **Crítico** | Un archivo versionado coincide con `.env*` (salvo `.env.example`), o un escáner de secretos (p. ej. gitleaks) encuentra credenciales en el historial. |
-| Alto | La visibilidad del repo contradice [repo-visibility.md](repo-visibility.md) (p. ej. `producto-cliente` en un repo público). |
+| Alto | `tipo: producto-cliente` en un repo público, aunque tenga `visibilidad: publico` ([repo-visibility.md](repo-visibility.md)). |
+| Alto | Requiere decisión del Dueño: `tipo` es `producto-nexoru` o `producto-cliente` y no declara `visibilidad` ([repo-visibility.md](repo-visibility.md#visibilidad-declarada)). |
+| Alto | Discrepancia de visibilidad: `visibilidad` declarada no coincide con la visibilidad real del repo en GitHub. |
 | Medio | No existe `.env.example`, o le falta alguna variable que el código lee. |
 | Medio | `fase: operacion` con fases pendientes en el roadmap: al menos una fase no está concluida. |
 | Medio | `fase: construccion` o `fase: especificacion` con el roadmap concluido. |
 | Bajo | El frontmatter tiene comentarios YAML. |
+
+Si `visibilidad` está declarada y coincide con la real, el programa la reporta como **aceptada**, sin hallazgo.
 
 ## Salida esperada del programa
 
@@ -86,4 +90,5 @@ nivel: <0-3>
 fallas:       lista de verificaciones fallidas del siguiente nivel, con número y detalle
 advertencias: specs sin plan.md/tasks.md, comentarios YAML, etc.
 hallazgos:    lista con severidad
+visibilidad:  aceptada | requiere-decision | discrepancia | sin-declarar (interno)
 ```

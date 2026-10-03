@@ -2,6 +2,22 @@
 
 Todas las versiones del Estándar de Proyecto Nexoru. Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/); versionado según [semver](https://semver.org/lang/es/) (ver `CLAUDE.md`).
 
+## [1.2.0] - 2026-10-03
+
+Versión MINOR: ningún proyecto conforme con 1.1 deja de serlo. Los proyectos pueden seguir declarando `version_estandar: "1.1"` hasta actualizarse.
+
+### Agregado
+- `standard/project-manifest.md`: campo opcional `visibilidad` (`publico` | `privado`), con el que el Dueño declara la visibilidad decidida del repo; la razón va en `## Decisiones clave`.
+- `standard/repo-visibility.md`: sección "Visibilidad declarada", que compara el campo con la visibilidad real del repo en GitHub.
+- `standard/conformance.md`: hallazgos altos "requiere decisión del Dueño" (`producto-nexoru` o `producto-cliente` sin `visibilidad`) y "discrepancia de visibilidad" (declarada distinta de la real). Si coincide, se reporta como aceptada. Ninguno cambia el nivel. La salida del programa incluye el resultado de visibilidad.
+- `templates/PROJECT.md`: `visibilidad: CONFIRMAR` y una fila de ejemplo en `## Decisiones clave` con el Proyecto Demo.
+- `migration/guide.md`: la visibilidad y su razón entran en las preguntas para el Dueño.
+
+### Cambiado
+- `standard/conformance.md`, verificación 3.2: se cumple cuando la ejecución terminada más reciente de cada workflow que satisface 3.1 terminó con éxito en la rama principal.
+- `standard/conformance.md`: el hallazgo alto de visibilidad genérico queda como "`producto-cliente` en un repo público", aunque esté declarado.
+- `version_estandar` de las plantillas a `"1.2"`.
+
 ## [1.1.0] - 2026-10-01
 
 Versión MINOR: ningún proyecto conforme con 1.0 deja de serlo. Los proyectos pueden seguir declarando `version_estandar: "1.0"` hasta actualizarse.
