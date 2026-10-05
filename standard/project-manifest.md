@@ -1,6 +1,6 @@
 # Manifiesto del proyecto: frontmatter de `PROJECT.md`
 
-Versión 1.2. El frontmatter de `PROJECT.md` es el manifiesto del proyecto: lo leen el dashboard, los programas de conformidad y Obsidian (como propiedades).
+Versión 1.3. El frontmatter de `PROJECT.md` es el manifiesto del proyecto: lo leen el dashboard, los programas de conformidad y Obsidian (como propiedades).
 
 ## Reglas de formato
 
@@ -28,7 +28,7 @@ Versión 1.2. El frontmatter de `PROJECT.md` es el manifiesto del proyecto: lo l
 | `repo` | texto | Sí | `organizacion/nombre` | Repositorio en GitHub. |
 | `visibilidad` | texto | No | `publico`, `privado` | Visibilidad del repo **decidida por el Dueño**, según [repo-visibility.md](repo-visibility.md). La razón se registra como fila en `## Decisiones clave` (revisión humana). Vacío equivale a no declarado. |
 | `fecha_inicio` | fecha | Sí | `AAAA-MM-DD` | Inicio del proyecto, **decidido por el Dueño**. No es la fecha del primer commit, que se deriva de git y no se captura. |
-| `fecha_objetivo` | fecha | Sí, salvo en `operacion`, `pausado` y `retirado` | `AAAA-MM-DD`, mayor o igual a `fecha_inicio` | Fecha comprometida para la próxima meta del proyecto. |
+| `fecha_objetivo` | fecha | Sí, salvo en `operacion`, `pausado` y `retirado` | `AAAA-MM-DD`, mayor o igual a `fecha_inicio` | Fecha comprometida para la próxima meta del proyecto. En `operacion` es opcional: cada incremento lleva su fecha en la columna `Fecha objetivo` del roadmap. |
 | `stack` | lista de texto | Sí | Minúsculas con guion (`nextjs`, `postgres`, `vercel`) | Tecnologías y plataformas base. |
 | `servicios` | lista de texto | Sí (puede ser vacía) | Minúsculas con guion (`api-pagos`, `api-correo`) | Servicios externos consumidos. Cada uno debe tener fila en `## Costo mensual` (ver [correspondencia fila–servicio](project-standard.md#tabla-de-costo-mensual)). |
 | `costo_mensual_usd` | número | Sí | Número `>= 0`, sin símbolo ni comas | Suma de la tabla `## Costo mensual`. |
@@ -84,7 +84,7 @@ servicios:
 costo_mensual_usd: 45
 siguiente_hito: Fase 3, pagos en línea
 mapa_funcional: docs/mapa-funcional.md
-version_estandar: "1.2"
+version_estandar: "1.3"
 ---
 ```
 

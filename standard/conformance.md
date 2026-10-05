@@ -1,6 +1,6 @@
 # Conformidad
 
-Versión 1.2. Define los niveles de conformidad de un proyecto. Cada verificación está escrita para que un programa la ejecute sobre el repo sin interpretación humana.
+Versión 1.3. Define los niveles de conformidad de un proyecto. Cada verificación está escrita para que un programa la ejecute sobre el repo sin interpretación humana.
 
 ## Niveles
 
@@ -30,7 +30,7 @@ Un evaluador del portafolio recorre las subcarpetas de `PROJECTS_ROOT` y omite l
 | 1.5 | Los valores son planos o listas simples de texto (sin objetos anidados). |
 | 1.6 | Las fechas tienen formato `AAAA-MM-DD`. |
 | 1.7 | Se cumplen las validaciones cruzadas de [project-manifest.md](project-manifest.md#validaciones-cruzadas). |
-| 1.8 | Existen las 9 secciones H2 de [project-standard.md §2](project-standard.md#2-projectmd-portada-ejecutiva), en ese orden. |
+| 1.8 | Existen las 9 secciones H2 de [project-standard.md §2](project-standard.md#2-projectmd-portada-ejecutiva), en ese orden. La sección opcional `## Incrementos planeados`, si existe, está entre `## Roadmap` y `## Decisiones clave` y contiene una tabla con el encabezado exacto `Incremento \| Objetivo \| Prioridad \| Referencia`, con `Prioridad` en `alta`, `media` o `baja`. |
 | 1.9 | `## Resumen ejecutivo` contiene una línea que empieza con `**Métricas de éxito:**`. |
 | 1.10 | `## Costo mensual` contiene una tabla con encabezado `Servicio \| USD/mes \| Nota`, una fila por cada elemento de `servicios` (correspondencia según [project-standard.md](project-standard.md#tabla-de-costo-mensual)) y una fila **Total**. |
 | 1.11 | La cadena `CONFIRMAR` no aparece en ningún lugar de `PROJECT.md`. |
@@ -67,7 +67,7 @@ Una carpeta de spec sin `plan.md` o sin `tasks.md` no rompe el nivel 2, pero el 
 
 ## Hallazgos fuera de nivel
 
-Estas verificaciones vienen de [project-standard.md §6](project-standard.md#6-repositorio-ci-y-secretos) y de [lifecycle.md](lifecycle.md#cierre-y-reactivación). No cambian el nivel, pero el programa las reporta siempre. "Concluida" y "concluido" se definen en [roadmap.md](roadmap.md#fase-y-roadmap-concluidos):
+Estas verificaciones vienen de [project-standard.md §6](project-standard.md#6-repositorio-ci-y-secretos) y de [lifecycle.md](lifecycle.md#cierre-y-apertura-de-incrementos). No cambian el nivel, pero el programa las reporta siempre. "Concluida" y "concluido" se definen en [roadmap.md](roadmap.md#fase-y-roadmap-concluidos); las filas de `## Incrementos planeados` no cuentan como fases:
 
 | Severidad | Verificación |
 |---|---|

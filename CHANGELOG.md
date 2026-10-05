@@ -2,6 +2,22 @@
 
 Todas las versiones del Estándar de Proyecto Nexoru. Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/); versionado según [semver](https://semver.org/lang/es/) (ver `CLAUDE.md`).
 
+## [1.3.0] - 2026-10-04
+
+Versión MINOR: ningún proyecto conforme con 1.2 deja de serlo. Los proyectos pueden seguir declarando `version_estandar: "1.2"` hasta actualizarse.
+
+### Agregado
+- `standard/project-standard.md`: sección opcional `## Incrementos planeados` en `PROJECT.md`, entre `## Roadmap` y `## Decisiones clave`, con la tabla `Incremento | Objetivo | Prioridad | Referencia`. No forma parte del roadmap, no cuenta para el avance y no genera hallazgos de cierre.
+- `standard/roadmap.md`: sección "Apertura de un incremento" (la fila sale de `## Incrementos planeados` y entra al roadmap como la siguiente fase, con su spec y fecha objetivo) y ejemplo del Proyecto Demo con un incremento planeado.
+- `standard/lifecycle.md`: apertura y cierre de incrementos. Al abrir uno, `fase` pasa a `especificacion` o `construccion` con `fase_desde` nuevo y se actualiza `docs/mapa-funcional.md`; al concluir, el proyecto vuelve a `operacion` con `fase_desde` nuevo.
+- `standard/conformance.md`, verificación 1.8: formato de `## Incrementos planeados` cuando existe. Las filas de esa sección no cuentan como fases en los hallazgos de cierre.
+- `templates/PROJECT.md`: sección `## Incrementos planeados` con un ejemplo del Proyecto Demo.
+
+### Cambiado
+- `standard/lifecycle.md`: "Cierre y reactivación" pasa a "Cierre y apertura de incrementos".
+- `standard/project-manifest.md`: se aclara que `fecha_objetivo` es opcional en `operacion` porque cada incremento lleva su fecha en el roadmap (ya era opcional desde 1.0).
+- `version_estandar` de las plantillas a `"1.3"`.
+
 ## [1.2.0] - 2026-10-03
 
 Versión MINOR: ningún proyecto conforme con 1.1 deja de serlo. Los proyectos pueden seguir declarando `version_estandar: "1.1"` hasta actualizarse.

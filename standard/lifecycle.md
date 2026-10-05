@@ -1,6 +1,6 @@
 # Ciclo de vida de un producto Nexoru
 
-Versión 1.2. Define los valores del campo `fase` del manifiesto y cuándo se pasa de uno a otro.
+Versión 1.3. Define los valores del campo `fase` del manifiesto y cuándo se pasa de uno a otro.
 
 ## Modelo
 
@@ -17,11 +17,12 @@ flowchart LR
   PI -->|producto-nexoru| O
   O --> R[retirado]
   C -->|roadmap concluido, sin despliegue| R
-  O & R -. incremento .-> E & C
+  O & R -. apertura de incremento .-> E & C
+  C -. incremento concluido .-> O
   C & P & PI & M -.-> PA[pausado]
 ```
 
-`pausado` se puede alcanzar desde cualquier fase y regresa a la fase de la que salió. Agregar una fase nueva al roadmap de un proyecto en `operacion` o `retirado` lo regresa a `especificacion` o `construccion` (ver [Cierre y reactivación](#cierre-y-reactivación)). Cada cambio de `fase` actualiza `fase_desde`.
+`pausado` se puede alcanzar desde cualquier fase y regresa a la fase de la que salió. Abrir un incremento en un proyecto en `operacion` o `retirado` lo regresa a `especificacion` o `construccion`, y al concluir el incremento vuelve a `operacion` (ver [Cierre y apertura de incrementos](#cierre-y-apertura-de-incrementos)). Cada cambio de `fase` actualiza `fase_desde`.
 
 ## Criterios por fase
 
@@ -33,15 +34,15 @@ flowchart LR
 | `pruebas` | Funcionalidad comprometida desplegada en el subdominio de Nexoru. | Criterios de aceptación de las specs verificados con pruebas reales y registrados en `## Evidencia de validación`. Ninguna fase del lanzamiento queda como `implementada-sin-validar`. |
 | `piloto` | Pruebas completas. Usuarios reales definidos y costos mensuales en `## Costo mensual`. | Métricas de éxito medidas con uso real durante el periodo acordado y aceptadas por el Dueño (y por el cliente, en `producto-cliente`). |
 | `migracion` | Solo `producto-cliente`. Piloto aceptado; dominio, cuentas e infraestructura del cliente disponibles. | Sistema corriendo en el dominio del cliente (`despliegue: dominio-cliente`, `urls` actualizadas); secretos rotados y en poder del cliente; datos migrados y verificados; el subdominio de Nexoru se da de baja o redirige. |
-| `operacion` | Piloto aceptado (`producto-nexoru`) o migración completa (`producto-cliente`), con el roadmap concluido y el sistema desplegado. | No es final: sale a `pausado`, a `retirado`, o a `especificacion`/`construccion` al agregar una fase nueva al roadmap. |
+| `operacion` | Piloto aceptado (`producto-nexoru`) o migración completa (`producto-cliente`), con el roadmap concluido y el sistema desplegado. | No es final: sale a `pausado`, a `retirado`, o a `especificacion`/`construccion` al abrir un incremento. |
 | `pausado` | Decisión explícita del Dueño, con el motivo registrado en `## Riesgos, bloqueos y dependencias`. | Decisión del Dueño de reanudar, con nueva `fecha_objetivo`. |
-| `retirado` | Una de dos: (a) el roadmap está concluido y el sistema no está desplegado; o (b) decisión explícita del Dueño de retirar un proyecto en `operacion` o `pausado`, con el motivo registrado en `## Decisiones clave`. En ambos casos: `despliegue: ninguno` sin `urls`, secretos de producción revocados y, en `producto-cliente`, entrega al cliente de sus datos y credenciales. | No es final: se reactiva al agregar una fase nueva al roadmap (ver abajo). |
+| `retirado` | Una de dos: (a) el roadmap está concluido y el sistema no está desplegado; o (b) decisión explícita del Dueño de retirar un proyecto en `operacion` o `pausado`, con el motivo registrado en `## Decisiones clave`. En ambos casos: `despliegue: ninguno` sin `urls`, secretos de producción revocados y, en `producto-cliente`, entrega al cliente de sus datos y credenciales. | No es final: se reactiva al abrir un incremento (ver abajo). |
 
 ## Relación con el roadmap
 
 `fase` describe al **proyecto completo**; las fases del roadmap (`0`, `1`, `1.5`, ...) describen **entregas**. Un proyecto puede estar en `construccion` con varias entregas del roadmap ya completas y en uso real: p. ej., un proyecto cuyas primeras fases ya se usan en su subdominio mientras construye las siguientes.
 
-## Cierre y reactivación
+## Cierre y apertura de incrementos
 
 Las definiciones de fase concluida y roadmap concluido están en [roadmap.md](roadmap.md#fase-y-roadmap-concluidos).
 
@@ -49,7 +50,11 @@ Las definiciones de fase concluida y roadmap concluido están en [roadmap.md](ro
 - Si está desplegado (`despliegue` distinto de `ninguno`), su destino es `operacion`. Si todavía le faltan `pruebas`, `piloto` o `migracion`, pasa por ellas antes, con sus criterios de entrada y salida.
 - Si no está desplegado, pasa a `retirado`.
 
-**Reactivación.** Agregar una fase nueva al roadmap (un **incremento**) de un proyecto con el roadmap concluido (en `operacion`, `retirado` o en camino a `operacion`) obliga, en el mismo commit, a:
-1. Cambiar `fase` a `especificacion` (si la fase nueva todavía no tiene `spec.md` y `plan.md`) o a `construccion` (si ya los tiene), con un `fase_desde` nuevo.
-2. Definir `fecha_objetivo` para la fase nueva.
+**Incrementos planeados.** Mientras un incremento solo está planeado, vive en la sección opcional `## Incrementos planeados` de `PROJECT.md` ([project-standard.md](project-standard.md#sección-opcional--incrementos-planeados)). No forma parte del roadmap y no cambia la `fase` del proyecto.
+
+**Apertura de un incremento.** Abrir un incremento (agregar una fase nueva al roadmap) en un proyecto con el roadmap concluido (en `operacion`, `retirado` o en camino a `operacion`) obliga, en el mismo commit, a:
+1. Mover su fila de `## Incrementos planeados` al roadmap como la siguiente fase, con su spec y su fecha objetivo ([roadmap.md](roadmap.md#apertura-de-un-incremento)).
+2. Cambiar `fase` a `especificacion` (si la spec todavía no tiene `spec.md` y `plan.md`) o a `construccion` (si ya los tiene), con un `fase_desde` nuevo, y poner `fecha_objetivo` (obligatoria en esas fases) igual a la fecha objetivo del incremento.
 3. Actualizar `docs/mapa-funcional.md` con lo que agrega el incremento: componentes, flujo, reglas, datos y fuentes, e integraciones nuevos o modificados.
+
+**Cierre de un incremento.** Cuando la fase del incremento concluye y con ella el roadmap, el proyecto vuelve a `operacion` con un `fase_desde` nuevo (o a `retirado`, si no está desplegado). En `operacion`, `fecha_objetivo` es opcional ([project-manifest.md](project-manifest.md)).

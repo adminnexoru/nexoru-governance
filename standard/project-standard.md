@@ -1,6 +1,6 @@
 # Estándar de Proyecto Nexoru
 
-Versión 1.2. Define qué debe tener todo proyecto que vive en `/proyectos/<nombre>` y cómo se relacionan sus documentos.
+Versión 1.3. Define qué debe tener todo proyecto que vive en `/proyectos/<nombre>` y cómo se relacionan sus documentos.
 
 ## 1. Artefactos obligatorios
 
@@ -31,6 +31,24 @@ Empieza con el frontmatter YAML definido en [project-manifest.md](project-manife
 
 Debajo del título H1 va una nota que remite al mapa funcional y a `specs/`, y declara la regla de precedencia (regla central b).
 
+### Sección opcional: `## Incrementos planeados`
+
+Lista los incrementos que el Dueño planea pero todavía no abre: trabajo futuro sin spec ni fecha comprometida. Si existe, va entre `## Roadmap` y `## Decisiones clave`, con una tabla con este encabezado exacto:
+
+```markdown
+| Incremento | Objetivo | Prioridad | Referencia |
+|---|---|---|---|
+```
+
+| Columna | Contenido |
+|---|---|
+| `Incremento` | Nombre corto del incremento. |
+| `Objetivo` | Qué entregaría, en una línea. |
+| `Prioridad` | `alta`, `media` o `baja`. |
+| `Referencia` | Entrada del backlog o issue de GitHub donde se detalla (p. ej. `B-007` o `#42`), o `—`. |
+
+Esta tabla **no forma parte del roadmap**: no cuenta para el estado de las fases ni para el avance del proyecto (p. ej. el porcentaje de tareas que calcule un dashboard), y no se considera al decidir si el roadmap está concluido, así que no genera hallazgos de cierre. Cómo se abre un incremento: [lifecycle.md](lifecycle.md#cierre-y-apertura-de-incrementos).
+
 ### Tabla de costo mensual
 
 Una fila de `## Costo mensual` corresponde a un servicio de `servicios` si el identificador del servicio aparece dentro del **nombre normalizado** de la fila. El nombre es el valor de la primera columna, y se normaliza así: todo a minúsculas y cada tramo de espacios convertido en un guion. El nombre puede ser legible; si no contiene el identificador, se le agrega entre paréntesis.
@@ -58,7 +76,7 @@ Frontmatter:
 ---
 proyecto: <id del proyecto>
 tipo_documento: mapa-funcional
-version_estandar: "1.2"
+version_estandar: "1.3"
 ---
 ```
 

@@ -20,7 +20,7 @@ servicios:
 costo_mensual_usd: CONFIRMAR
 siguiente_hito: CONFIRMAR
 mapa_funcional: docs/mapa-funcional.md
-version_estandar: "1.2"
+version_estandar: "1.3"
 ---
 
 # CONFIRMAR: nombre del proyecto
@@ -53,6 +53,14 @@ El estado de cada fase lo calcula el dashboard a partir de `tasks.md` de las spe
 | Fase | Objetivo | Specs | Fecha objetivo | Estado manual |
 |---|---|---|---|---|
 | CONFIRMAR | CONFIRMAR | CONFIRMAR | CONFIRMAR | CONFIRMAR |
+
+## Incrementos planeados
+
+Sección opcional: bórrala si no hay incrementos planeados. No forma parte del roadmap.
+
+| Incremento | Objetivo | Prioridad | Referencia |
+|---|---|---|---|
+| CONFIRMAR (p. ej. en Proyecto Demo: "Programa de lealtad") | CONFIRMAR (p. ej. "Puntos por compra y canje en el catálogo") | CONFIRMAR (`alta`, `media` o `baja`) | CONFIRMAR (backlog o issue, p. ej. `B-007`, o `—`) |
 
 ## Decisiones clave
 

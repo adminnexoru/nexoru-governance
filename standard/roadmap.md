@@ -1,6 +1,6 @@
 # Roadmap
 
-Versión 1.2. Formato de la sección `## Roadmap` de `PROJECT.md` y cómo se obtiene el estado de cada fase.
+Versión 1.3. Formato de la sección `## Roadmap` de `PROJECT.md` y cómo se obtiene el estado de cada fase.
 
 ## Formato de la tabla
 
@@ -63,7 +63,15 @@ Una **fase del roadmap está concluida** si:
 
 Cualquier otro estado (`en-curso`, `implementada-sin-validar`, `bloqueada`, `pendiente`) significa que la fase no está concluida.
 
-El **roadmap está concluido** si tiene al menos una fase y todas sus fases están concluidas. Qué pasa con la `fase` del proyecto cuando el roadmap concluye, y cuando se le agrega una fase nueva, se define en [lifecycle.md](lifecycle.md#cierre-y-reactivación).
+El **roadmap está concluido** si tiene al menos una fase y todas sus fases están concluidas. Las filas de `## Incrementos planeados` ([project-standard.md](project-standard.md#sección-opcional--incrementos-planeados)) no son fases y no cuentan. Qué pasa con la `fase` del proyecto cuando el roadmap concluye, y cuando se abre un incremento, se define en [lifecycle.md](lifecycle.md#cierre-y-apertura-de-incrementos).
+
+## Apertura de un incremento
+
+Al abrir un incremento, en el mismo commit:
+1. Su fila **sale** de `## Incrementos planeados` (si estaba ahí).
+2. **Entra** al roadmap como la siguiente fase: identificador mayor que el de la última fase, `Specs` con la carpeta de su spec en `specs/` (con al menos `spec.md`) y `Fecha objetivo` con su fecha comprometida.
+
+Los cambios de `fase`, `fase_desde` y mapa funcional que acompañan la apertura están en [lifecycle.md](lifecycle.md#cierre-y-apertura-de-incrementos).
 
 ## Ejemplo
 
@@ -76,3 +84,13 @@ El **roadmap está concluido** si tiene al menos una fase y todas sus fases est�
 | 3 | Pagos en línea | — | 2026-12-15 | bloqueada |
 | 4 | Reportes | — | 2026-12-15 | pendiente |
 ```
+
+Con un incremento planeado en `## Incrementos planeados`:
+
+```markdown
+| Incremento | Objetivo | Prioridad | Referencia |
+|---|---|---|---|
+| Programa de lealtad | Puntos por compra y canje en el catálogo | media | B-007 |
+```
+
+Cuando el Dueño lo abre, la fila sale de esa tabla y entra al roadmap como fase 5, p. ej. `| 5 | Programa de lealtad | 004-programa-lealtad | 2027-03-31 | |`.

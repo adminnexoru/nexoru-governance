@@ -1,6 +1,6 @@
 # Guía de migración al Estándar de Proyecto Nexoru
 
-Versión 1.2. Paso a paso para adecuar un proyecto existente en `/proyectos/<nombre>`.
+Versión 1.3. Paso a paso para adecuar un proyecto existente en `/proyectos/<nombre>`.
 
 ## Resumen
 
@@ -93,7 +93,7 @@ No hagas push hasta que el Dueño revise.
 Pega este prompt en Claude Code, desde la raíz del proyecto. Reemplaza `<nombre>` y la ruta del estándar si hace falta.
 
 ```text
-Responde en español. Vas a migrar este proyecto al Estándar de Proyecto Nexoru v1.2.
+Responde en español. Vas a migrar este proyecto al Estándar de Proyecto Nexoru v1.3.
 El estándar está en /proyectos/nexoru-governance (si no existe, clónalo de
 adminnexoru/nexoru-governance). Antes de escribir, lee standard/project-standard.md,
 standard/project-manifest.md, standard/roadmap.md, standard/conformance.md y
